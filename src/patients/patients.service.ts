@@ -127,7 +127,7 @@ export class PatientsService {
         // .andWhere('DATE(spi.ENTRY_DATE) = CURDATE()') 
         .andWhere('pr.patientId IS NULL')
         .select(['spi.id', 'spi.name', 'spi.SL_NO', 'spi.AGE', 'spi.GENDER','pa.REG_NO'])
-        .orderBy('spi.id', 'ASC')
+        .orderBy('spi.id', 'DESC')
         .take(20)
         .getMany();
 
@@ -147,7 +147,7 @@ export class PatientsService {
           GENDER: true
         },
         order: {
-          id: 'ASC',
+          SL_NO: 'asc',
         },
         take: 20,
       });

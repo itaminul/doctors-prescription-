@@ -321,7 +321,7 @@ export class CreatepatientsrxService {
         order: {
           id: 'DESC',
         },
-        take, 
+        take,
         skip,
       });
 
@@ -434,9 +434,10 @@ export class CreatepatientsrxService {
       }
 
       const formattedData = data.map((patientdata) => ({
+        id: patientdata.id || null,
         patientId: patientdata.patPatientInfo?.id || null,
         patientsName: patientdata.patPatientInfo?.name || 'Unknown',
-        patientDoctorId: patientdata.patPatientInfo?.id || null,
+        REG_NO: patientdata.patPatientInfo?.REG_NO || 'Unknown',        
         rxDate: patientdata.RXDATE || null,
       }));
       return formattedData;
@@ -465,7 +466,7 @@ export class CreatepatientsrxService {
         rxPackage,
         ...patientData
       } = createPatientDto;
-      // console.log('save data in prescription', createPatientDto);
+      console.log('save data in prescription', createPatientDto);
       const patientDataa = this.patientRxRepository.create(patientData);
       const savePatientRx = await this.patientRxRepository.save(patientDataa);
       const medicineMap = new Map<number, Medicine>();
@@ -1028,6 +1029,9 @@ export class CreatepatientsrxService {
         rxInvestigations,
         rxAdvice,
         rxComplains,
+        rxPlain,
+        rxPackage,
+        rxOnExamination,
         ...patientData
       } = updatePatientsRxDTO;
       const patient = await this.patientRxRepository.findOne({
@@ -1038,6 +1042,9 @@ export class CreatepatientsrxService {
           'rxAdvice',
           'rxComplains',
           'rxInvestigations',
+          'rxPlain',
+          'rxPackage',
+          'rxOnExamination',
         ],
       });
 
@@ -1510,6 +1517,15 @@ export class CreatepatientsrxService {
           },
           rxAdvice: {
             setAdvice: true,
+          },
+          rxPackage: {
+            setPackage: true,
+          },
+          rxPlain: {
+            setPlain: true,
+          },
+          rxOnExamination: {
+            setOnExaminations: true,
           },
         },
         order: {

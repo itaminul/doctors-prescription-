@@ -13,6 +13,9 @@ export class AddPatientDto {
   @IsString()
   AGE: string;
   @IsOptional()
+  @IsNumber()
+  PATIENT_STATUS: number;  
+  @IsOptional()
   @IsString()
   GENDER: string;
   @IsOptional()

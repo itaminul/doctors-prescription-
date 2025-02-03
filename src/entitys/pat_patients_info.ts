@@ -20,7 +20,7 @@ export class pat_patients_info {
   @Column({ type: 'varchar', length: 255, nullable: true })
   email: string;
   @Column({ type: 'varchar', length: 50, nullable: true })
-  SL_NO: string;
+  SL_NO: number;
 
   @Column({ type: 'date', nullable: true })
   ENTRY_DATE: Date;

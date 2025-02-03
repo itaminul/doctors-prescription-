@@ -41,6 +41,7 @@ export class CreatepatientsrxController {
     return await this.createPatientService.update(id, updatePatDtp);
   }
 
+  @UseInterceptors(CacheInterceptor)
   @Get('/get-patient-by-id/:id')
   async getPatientById(@Param('id') id: number) {
     return await this.createPatientService.getPatientById(id);

@@ -7,7 +7,7 @@ export class RxPlain {
   @PrimaryGeneratedColumn()
   id: number;
   @Column({ default: 1 })
-doctorId: number;
+  doctorId: number;
   @Column({ default: 1 })
   orgId: number;
   @Column({ default: 1 })
